@@ -11,4 +11,4 @@ npm run build
 
 Import the files from the generated `./dist` directory into the `./view` directory of the **ServerPapers** project
 
-Please refer to [CairBin/ServerPapers-Web](https://github.com/CairBin/ServerPapers) for more details
+Please refer to [CairBin/ServerPapers](https://github.com/CairBin/ServerPapers) for more details
