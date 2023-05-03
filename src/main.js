@@ -8,6 +8,7 @@ import App from './App.vue'
 import SocketIO from './plugins/socket/index'
 
 const app = createApp(App)
+const URL = process.env.NODE_ENV === "production" ? undefined : "http://localhost:8248"
 
 //use icons
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
@@ -17,7 +18,7 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 app.use(ElementPlus)
 app.use(router)
 app.use(SocketIO, {
-    connection: 'http://localhost:8248'
+    connection: URL
 })
 
 app.mount('#app')
