@@ -55,7 +55,7 @@ socket.on('stopLive', () => {
                         <el-col>
                             <h2><el-icon><SwitchButton /></el-icon> Status</h2>
                             <el-text v-if="item.status=='online'" type="success">{{ item.status }}</el-text>
-                            <el-text v-if="item.status=='outline'" type="danger">{{ item.status }}</el-text>
+                            <el-text v-if="item.status=='offline'" type="danger">{{ item.status }}</el-text>
                         </el-col>
                     </el-row>
                     <el-row style="height:auto;">
