@@ -24,7 +24,7 @@ socket.on('flashInfo', (res) => {
             temp.push(res[key])
         })
         data.servers = temp
-        console.log(temp)
+        //console.log(temp)
     }
 })
 
@@ -39,7 +39,7 @@ socket.on('stopLive', () => {
 </script>
 
 <template>
-    <el-card v-for="item in data.servers" :key="item.name" style="min-height:600px;">
+    <el-card v-for="item in data.servers" :key="item.name" style="min-height:600px;margin-bottom:20px;">
         <el-container style="width:100%;height:100%;">
             <el-row type="flex" justify="center" style="width:100%;">
                 <el-col :span="8" style="height:100%;">
