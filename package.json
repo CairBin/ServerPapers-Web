@@ -1,0 +1,31 @@
+{
+  "name": "server_papers_web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "@types/node": "^22.7.5",
+    "@types/sm-crypto": "^0.3.4",
+    "@vueuse/core": "^11.1.0",
+    "crypto-js": "^4.2.0",
+    "element-plus": "^2.8.5",
+    "sm-crypto": "^0.3.13",
+    "socket.io-client": "^4.8.0",
+    "vue": "^3.5.10",
+    "vue-router": "4"
+  },
+  "devDependencies": {
+    "@types/babel__preset-env": "^7.9.7",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "typescript": "^5.5.3",
+    "unplugin-auto-import": "^0.18.3",
+    "vite": "^5.4.8",
+    "vue-tsc": "^2.1.6"
+  }
+}
