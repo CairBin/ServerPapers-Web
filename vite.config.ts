@@ -15,4 +15,5 @@ export default defineConfig({
   optimizeDeps: {
     include: ['crypto-js'], // 显式引入需要预打包的依赖
   },
+  base:'./'
 })

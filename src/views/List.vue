@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import {ElMessage} from 'element-plus';
 import {io} from 'socket.io-client';
-import {useRoute,useRouter} from 'vue-router';
+import {useRouter} from 'vue-router';
 import {reactive} from 'vue';
+import Example from '../components/Example.vue';
 
 const router = useRouter();
-const route = useRoute();
 
 const data = reactive({
     clientInfo:new Map<string,any>(),
+    isLog:false,
 });
 
 const user = history.state.params.user;
@@ -58,7 +59,8 @@ socket.on('clientInfo',(message)=>{
         return;
 
     data.clientInfo.set(message.user, message.data);
-    console.log(message.data)
+    if(data.isLog)
+        console.log(JSON.stringify(message.data));
 });
 
 
@@ -99,44 +101,28 @@ const closeSocket = ()=>{
 </script>
 
 <template>
-    <el-button type="danger" @click="closeSocket" style="position:absolute;margin-right:10px;right:0;">Close</el-button>
-    <el-card class="info-card" v-for="(item, key) in data.clientInfo" :key="key">
-        <el-container class="info-card-container">
-            <el-row type="flex" justify="center" style="width:100%">
-                <el-row style="height:auto;">
-                    <el-col>
-                        <h2><el-icon><House /></el-icon> Node</h2>
-                    </el-col>
-                    <el-col>
-                        <el-text type="primary">{{ item[0] }}</el-text>
-                        
-                    </el-col>
-                </el-row>
-                <el-row>
-                    <el-col>
-                        <h2><el-icon><SwitchButton /></el-icon> Status</h2>
-                        <el-text type="danger">Online</el-text>
-                    </el-col>
-                </el-row>
-            </el-row>
-
-            <el-row style="height:auto;">
-                <el-col>
-                    <h2><el-icon><Clock /></el-icon> System Time</h2>
-                </el-col>
-                <el-col>
-                    <el-text type="info">{{ item[1].time.systemTime }}</el-text>
-                </el-col>
-            </el-row>
-        </el-container>
-    </el-card>
-
+    <el-col class="panel-col" style="width:100%;">
+        <el-row justify="space-between" style="width:100%">
+            <div>
+                Log in console <el-switch v-model="data.isLog"></el-switch>
+            </div>
+            <div>
+                <el-button type="danger" @click="closeSocket">Disconnect</el-button>
+            </div>
+        </el-row>
+    </el-col>
+    <el-col v-for="(item,key) in data.clientInfo" :key="key" class="panel-col" style="width:100%">
+        <el-card style="width:100%;">
+            <Example :user="item[0]" :data="item[1]"></Example>
+        </el-card>
+    </el-col>
 </template>
 
 <style>
 .info-card{
-    min-height: 600px;
-    margin-bottom:20px;
+    height:100%;
+    margin-bottom:5px;
+    width:100%;
 }
 
 .info-card-container{
@@ -144,10 +130,11 @@ const closeSocket = ()=>{
     height:100%;
 }
 
-.el-col{
+.panel-col{
     font-size:16px;
+    margin-bottom:10px;
 }
-.el-col span{
+.panel-col span{
     font-weight: 600;
     font-size:16px;
 }
