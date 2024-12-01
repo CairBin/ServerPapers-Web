@@ -43,6 +43,7 @@
               </div>
             </div>
           </div>
+
           <div class="card" style="width:auto;">
             <h3><el-icon><FolderOpened /></el-icon> Disk</h3>
             <div class="cards">
@@ -54,6 +55,15 @@
               </div>
             </div>
           </div>
+
+          <div class="card" style="width:auto;">
+            <el-table :data="props.data.network.port.portProcess" border style="width: 100%">
+              <el-table-column prop="name" label="Process Name" width="200"></el-table-column>
+              <el-table-column prop="port" label="Port" width="120"></el-table-column>
+              <el-table-column prop="pid" label="PID" width="120"></el-table-column>
+            </el-table>
+          </div>
+
         </div>
       </div>
 </template>
